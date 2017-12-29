@@ -35,5 +35,7 @@ done
 	grep -v "[?*]" | cut -d " " -f2 | \
 	tr ' ' '\n')" scp sftp ssh
 
-# print a fortune when the terminal opens
-#fortune -a -s | lolcat
+## Add bash completion if you're using Mac/brew
+if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
+	. $(brew --prefix)/etc/bash_completion
+fi
