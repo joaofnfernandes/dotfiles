@@ -1,0 +1,13 @@
+tap "caskroom/cask"
+tap "homebrew/bundle"
+tap "homebrew/core"
+brew "bash-completion"
+brew "git"
+brew "shellcheck"
+brew "tmux"
+brew "tree"
+brew "truncate"
+brew "vim", args: ["with-override-system-vi"]
+brew "watch"
+cask "tcl"
+cask "vlc"
