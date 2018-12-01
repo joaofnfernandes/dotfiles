@@ -9,5 +9,6 @@ brew "tree"
 brew "truncate"
 brew "vim", args: ["with-override-system-vi"]
 brew "watch"
+cask "spectacle"
 cask "tcl"
 cask "vlc"

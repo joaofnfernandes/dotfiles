@@ -444,3 +444,12 @@ brew_restore() {
 brew_clean() {
 	brew bundle cleanup --global
 }
+################################################################################
+#  Atom, the file editor
+################################################################################
+atom_backup() {
+	apm list --installed --bare > confs/atom/packages.list
+}
+atom_restore() {
+	apm install --packages-file confs/atom/packages.list
+}
