@@ -1,6 +1,6 @@
-.PHONY: all bin dotfiles etc test shellcheck
+.PHONY: all bin dotfiles etc test shellcheck confs
 
-all: bin dotfiles etc
+all: bin dotfiles etc confs
 
 bin:
 	# add aliases for things in bin
@@ -29,6 +29,10 @@ etc:
 	done
 	systemctl --user daemon-reload || true
 	sudo systemctl daemon-reload
+
+confs:
+	ln -sfn $(CURDIR)/confs/spectacle.json $(HOME)/Library/Application\ Support/Spectacle/Shortcuts.json
+	ln -sfn $(CURDIR)/confs/atom/config.cson $(HOME)/.atom/config.cson
 
 test: shellcheck
 
