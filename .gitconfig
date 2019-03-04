@@ -18,6 +18,9 @@
 	# Checkout a pull request from origin (of a github repository)
 	pr = !"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr"
 
+	# Checkout a pull request from origin (of a github repository)
+	mr = !"mr() { git fetch upstream merge-requests/$1/head:mr-$1; git checkout mr-$1; }; mr"
+
 	# Clone a repository including all submodules
 	c = clone --recursive
 
