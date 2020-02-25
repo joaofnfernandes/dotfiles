@@ -4,7 +4,7 @@
 # -----------------
 # This script applies my favorite macos system settings
 ################################################################################
-set -eo pipefail
+set -eox pipefail
 
 # What's missing, needs to be configured manually
 # Keyboard / Input sources / Add US international
@@ -196,7 +196,7 @@ defaults write com.apple.spotlight orderedItems -array \
     '{"enabled" = 1;"name" = "SYSTEM_PREFS";}'
 
 # Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
+killall mds &> /dev/null || true
 # Make sure indexing is enabled for the main volume
 sudo mdutil -i on / > /dev/null
 # Rebuild the index from scratch
@@ -297,7 +297,8 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 ###############################################################################
 
 # Disable transparency in menu bar
-defaults write com.apple.universalaccess reduceTransparency -bool false
+# TODO jff: this is failing
+#defaults write com.apple.universalaccess reduceTransparency -bool false
 
 ###############################################################################
 # Finder settings
@@ -389,5 +390,5 @@ for app in "Activity Monitor" \
     "Dock" \
     "Finder" \
     "Spectacle"; do
-    killall "${app}" &> /dev/null
+    killall "${app}" &> /dev/null || true
 done

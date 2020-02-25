@@ -6,7 +6,6 @@
 ################################################################################
 set -eo pipefail
 
-
 install_brew(){
     if [[ -z "$(command -v brew)" ]]; then
         echo "Installing Homebrew"
