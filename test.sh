@@ -1,24 +1,28 @@
-#!/bin/bash
-set -e
-set -o pipefail
+#! /usr/bin/env bash
+################################################################################
+# test.sh
+# -----------------
+# Checks all bashscripts for errors
+################################################################################
+set -eo pipefail
 
 ERRORS=()
 
-# find all executables and run `shellcheck`
-for f in $(find . -type f -not -iwholename '*.git*' -not -name "yubitouch.sh" | sort -u); do
-	if file "$f" | grep --quiet shell; then
-		{
-			shellcheck "$f" && echo "[OK]: sucessfully linted $f"
-		} || {
-			# add to errors
-			ERRORS+=("$f")
-		}
-	fi
+# Find all executables and run `shellcheck`
+for f in $(find . -type f -name '*.sh' -o -name '.*' -not -name '*.git*' | sort -u); do
+    if file "$f" | grep --quiet shell; then
+        {
+            shellcheck "$f" && echo "[OK]: sucessfully linted $f"
+        } || {
+            # Add to errors
+            ERRORS+=("$f")
+        }
+    fi
 done
 
 if [ ${#ERRORS[@]} -eq 0 ]; then
-	echo "No errors, hooray"
+    echo "No errors, hooray"
 else
-	echo "These files failed shellcheck: ${ERRORS[*]}"
-	exit 1
+    echo "These files failed shellcheck: ${ERRORS[*]}"
+    exit 1
 fi

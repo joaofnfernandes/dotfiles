@@ -14,7 +14,7 @@ Session.vim
 *~
 
 .extra
-.gitconfig
+#.gitconfig
 .gnupg
 !.gnupg/gpg*.conf
 .i3/logfile

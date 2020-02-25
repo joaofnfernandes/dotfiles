@@ -303,7 +303,7 @@ install_golang() {
 	export GO_SRC=/usr/local/go
 
 	# if we are passing the version
-	if [[ ! -z "$1" ]]; then
+	if [[ -n "$1" ]]; then
 		GO_VERSION=$1
 	fi
 
@@ -568,11 +568,11 @@ install_vim() {
 	sudo ln -snf "${HOME}/.vimrc" /root/.config/nvim/init.vim
 
 	# update alternatives to neovim
-	sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 60
+	sudo update-alternatives --install /usr/bin/vi vi "$(command -v nvim)" 60
 	sudo update-alternatives --config vi
-	sudo update-alternatives --install /usr/bin/vim vim "$(which nvim)" 60
+	sudo update-alternatives --install /usr/bin/vim vim "$(command -v nvim)" 60
 	sudo update-alternatives --config vim
-	sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
+	sudo update-alternatives --install /usr/bin/editor editor "$(command -v nvim)" 60
 	sudo update-alternatives --config editor
 
 	# install things needed for deoplete for vim
@@ -621,7 +621,7 @@ install_vagrant() {
 	VAGRANT_VERSION=1.8.1
 
 	# if we are passing the version
-	if [[ ! -z "$1" ]]; then
+	if [[ -n "$1" ]]; then
 		export VAGRANT_VERSION=$1
 	fi
 

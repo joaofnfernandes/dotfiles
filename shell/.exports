@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Make vim the default editor
+export EDITOR="vim";
+
+# Increase bash history size. Default is 500
+export HISTSIZE=50000000;
+export HISTFILESIZE=$HISTSIZE;
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL='ignoreboth';
+# Don't store in history: commands starting with space and trivial commands
+export HISTIGNORE=" *:ls:cd:cd -:pwd:exit";
+
+# Prefer US English and use UTF-8
+export LANG="en_US.UTF-8";
+export LC_ALL="en_US.UTF-8";
+
+# Less ignores cases on search
+export LESS="--ignore-case --no-init --raw-control-chars --tabs=4 --quit-if-one-screen"
+
+# Man uses less as pager, with extra configs to show % in document
+# Don't add this to LESS=, because its's slow with large files
+export MANPAGER="less --long-prompt +Gg";
+
+# Start blinking
+export LESS_TERMCAP_mb="$yellow"
+# Start bold mode (typically headings and flags)
+export LESS_TERMCAP_md="$yellow"
+
+# End all mode like so, us, mb, md, and mr
+export LESS_TERMCAP_me="$reset"
+
+#Start underlining (typically flag options)
+#shellcheck disable=SC2154
+export LESS_TERMCAP_us="$green"
+# End underlining
+export LESS_TERMCAP_ue="$reset"
+
+# Start standout mode (search matches)
+# jff: try to move this color definition to .bash_prompt
+export LESS_TERMCAP_so=$'\e[01;44m'
+# End standout mode
+export LESS_TERMCAP_se="$reset"
