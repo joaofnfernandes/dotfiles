@@ -1,0 +1,15 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.activityBar.visible": true,
+    "explorer.openEditors.visible": 0,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "window.zoomLevel": 0,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "color-highlight.markerType": "dot-before",
+    "color-highlight.enable": false,
+}
